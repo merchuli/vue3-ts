@@ -1,4 +1,4 @@
-export interface BookItem {
+export interface IBookItem {
   id: number;
   title: string;
   author: string;

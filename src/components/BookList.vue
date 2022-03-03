@@ -12,23 +12,22 @@
 </template>
 <script setup lang="ts">
 import { defineProps, defineEmits } from 'vue';
-import { BookItem } from '../interfaces/bookItem';
+import { IBookItem } from '../interfaces/bookItem';
 
 type Props = {
-  bookList: BookItem[]
+  bookList: IBookItem[]
 }
 
 type Emits = {
-  (e: 'update-selected-book', payload: BookItem): void
+  (e: 'update-selected-book', payload: IBookItem): void
 }
 
 const props = defineProps<Props>();
 const emit = defineEmits<Emits>();
 
-function updateSelectedBook(payload: BookItem) {
+function updateSelectedBook(payload: IBookItem) {
   emit('update-selected-book', payload);
 }
-
 </script>
 <style scoped lang="sass">
 .clickable

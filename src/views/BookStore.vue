@@ -7,11 +7,11 @@
 </template>
 <script setup lang="ts">
 import { reactive, ref } from 'vue';
-import { BookItem } from '../interfaces/bookItem';
+import { IBookItem } from '../interfaces/bookItem';
 import BookList from '../components/BookList.vue';
 
 const selectedBook = ref<string>('');
-const bookItemList = reactive<BookItem[]>([
+const bookItemList = reactive<IBookItem[]>([
   {
     id: 1,
     title: 'A Song of Ice and Fire',
@@ -25,8 +25,7 @@ const bookItemList = reactive<BookItem[]>([
   },
 ]);
 
-function selectBook(payload: BookItem) {
+function selectBook(payload: IBookItem) {
   selectedBook.value = payload.title;
 }
-
 </script>
