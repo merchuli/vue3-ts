@@ -19,11 +19,13 @@
     <button @click="updateArray">update array</button>
     <p>refArray: {{ refArray }}</p>
     <p>reactiveArray: {{ reactiveArray }}</p>
+    <h3>computed</h3>
+    <p>total: {{ total }} (price * amount, price = 15)</p>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, reactive } from 'vue';
+import { computed, ref, reactive } from 'vue';
 import { useStore } from 'vuex';
 
 import MyComponent from '../components/MyComponent.vue';
@@ -46,8 +48,12 @@ const refArray = ref([1, 2, 3, 4]);
 const reactiveArray = reactive([1, 2, 3, 4]);
 
 // Static Variables
+const price = 15;
 const msg = 'Hello';
 const name = 'Merchu';
+
+// Computed
+const total = computed(() => price * amount.value);
 
 // functions
 function log() {
