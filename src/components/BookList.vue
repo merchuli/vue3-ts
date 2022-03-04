@@ -14,16 +14,16 @@
 import { defineProps, defineEmits } from 'vue';
 import { IBookItem } from '../interfaces/bookItem';
 
-type Props = {
+interface IProps {
   bookList: IBookItem[]
 }
 
-type Emits = {
+interface IEmits {
   (e: 'update-selected-book', payload: IBookItem): void
 }
 
-const props = defineProps<Props>();
-const emit = defineEmits<Emits>();
+const props = defineProps<IProps>();
+const emit = defineEmits<IEmits>();
 
 function updateSelectedBook(payload: IBookItem) {
   emit('update-selected-book', payload);

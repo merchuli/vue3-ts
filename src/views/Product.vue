@@ -13,6 +13,8 @@
 <script setup lang="ts">
 import { computed, ref, reactive } from 'vue';
 
+type ColorOptions = 'pink' | 'blue' | 'yellow';
+
 interface IProduct {
   price: number;
   capacity: number;
@@ -20,10 +22,10 @@ interface IProduct {
 
 const selectedColor = ref<string>('pink');
 const amount = ref(0); // 不特別註明也可，會自動賦予型別 Ref<number>
-const colorList: string[] = reactive(['pink', 'blue', 'yellow']);
+const colorList: ColorOptions[] = reactive(['pink', 'blue', 'yellow']);
 const product: IProduct = reactive({ price: 15, capacity: 100 });
 
-const total = computed(() => product.price * amount.value);
+const total = computed<number>(() => product.price * amount.value);
 
 function addAmount(num: number) {
   amount.value += num;
