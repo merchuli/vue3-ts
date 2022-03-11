@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     Hello World！
-    <button @click="log">Click me!</button>
+    <button id="my-test-of-auto-click" @click="log" disabled>Click me!</button>
     <div>{{ capitalize('hello') }}</div>
     amount: {{ amount }}
     refObj: {{ refObj }}
@@ -25,7 +25,9 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, reactive } from 'vue';
+import {
+  computed, onMounted, ref, reactive,
+} from 'vue';
 import { useStore } from 'vuex';
 
 import MyComponent from '../components/MyComponent.vue';
@@ -54,6 +56,11 @@ const name = 'Merchu';
 
 // Computed
 const total = computed(() => price * amount.value);
+
+function autoClick() {
+  console.log('auto click');
+  (document.getElementById('my-test-of-auto-click') as HTMLElement).click();
+}
 
 // functions
 function log() {
@@ -94,6 +101,8 @@ function updateArray() {
   refArray.value[0] = 9;
   reactiveArray[0] = 10;
 }
+
+onMounted(() => autoClick());
 
 // reactive
 // const count = ref(1);
